@@ -1,41 +1,58 @@
 package menu.view;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputValidator {
-    private static final String COACH_NAMES_DELIMITER = ",";
-    private static final String MENU_NAMES_DELIMITER = ",";
-    private static final String WHITE_SPACE = " ";
-    private static final int COACH_LOWER_BOUND = 2;
-    private static final int COACH_NAME_MIN_LENGTH = 2;
-    private static final int COACH_NAME_MAX_LENGTH = 4;
-    private static final int MENU_COUNT_UPPER_BOUND = 2;
-    private static final String INVALID_COACH_COUNT = "코치는 최소 2명 이상 입력해야 합니다.";
-    private static final String INVALID_MENU_COUNT = "못 먹는 메뉴는최대 2개까지 입력이 가능합니다.";
 
-    public void validateCoachNames(String names){
-        if(isInvalidCoachNames(names)){
-            throw new IllegalArgumentException(INVALID_COACH_COUNT);
+    private static final int COACHES_SIZE_LOWER_BOUND = 2;
+    private static final int COACHES_SIZE_UPPER_BOUND = 5;
+    private static final int VALID_NAME_SIZE_LOWER_BOUND = 2;
+    private static final int VALID_NAME_SIZE_UPPER_BOUND = 4;
+    private static final int VALID_MENU_SIZE_UPPER_BOUND = 2;
+    private static final String INVALID_COACHES_SIZE_MESSAGE = "코치님의 인원은 2~5명이어야 합니다.";
+    private static final String INVALID_NAME_SIZE_MESSAGE = "코치님의 이름은 2~4 글자여야 합니다.";
+    private static final String INVALID_MENU_SIZE_MESSAGE = "싫어하는 음식은 0~2개여야 합니다.";
+    private static final String DELIMITER = ",";
+    private static final int SPLIT_INDEX = -1;
+
+    public static void validateCoachName(String inputNames) {
+        List<String> names = splitNames(inputNames);
+        validateNames(names);
+        validateSize(names);
+    }
+
+    private static List<String> splitNames(String inputNames) {
+        return Arrays.stream(inputNames.split(DELIMITER, SPLIT_INDEX))
+                .collect(Collectors.toList());
+    }
+
+    private static void validateNames(List<String> names) {
+        boolean result = names.stream().anyMatch(InputValidator::validateName);
+        if (result) {
+            throw new IllegalArgumentException(INVALID_NAME_SIZE_MESSAGE);
         }
     }
 
-    private boolean isInvalidCoachNames(String names){
-        return Arrays.stream(names.split(COACH_NAMES_DELIMITER))
-                .anyMatch(this::isInvalidCoachName);
+    private static boolean validateName(String name) {
+        return name.length() < VALID_NAME_SIZE_LOWER_BOUND || name.length() > VALID_NAME_SIZE_UPPER_BOUND;
     }
 
-    private boolean isInvalidCoachName(String name){
-        return name.isBlank() || name.contains(WHITE_SPACE) || name.length() > COACH_NAME_MAX_LENGTH || name.length() < COACH_NAME_MIN_LENGTH;
-    }
-
-    public void validateMenuNames(String menus){
-        if(isInvalidMenuNames(menus)){
-            throw new IllegalArgumentException(INVALID_MENU_COUNT);
+    private static void validateSize(List<String> names) {
+        if (names.size() < COACHES_SIZE_LOWER_BOUND || COACHES_SIZE_UPPER_BOUND < names.size()) {
+            throw new IllegalArgumentException(INVALID_COACHES_SIZE_MESSAGE);
         }
     }
 
-    private boolean isInvalidMenuNames(String menus){
-        return Arrays.stream(menus.split(MENU_NAMES_DELIMITER))
-                .count() > MENU_COUNT_UPPER_BOUND;
+    public static void validateMenuNames(String inputNames) {
+        List<String> names = splitNames(inputNames);
+        validateMenuSize(names);
+    }
+
+    private static void validateMenuSize(List<String> names) {
+        if (VALID_MENU_SIZE_UPPER_BOUND < names.size()) {
+            throw new IllegalArgumentException(INVALID_MENU_SIZE_MESSAGE);
+        }
     }
 }
