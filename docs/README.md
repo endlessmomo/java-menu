@@ -46,6 +46,7 @@
 
 ### service
 - [x] CoachService :  코치 정보를 다루는 서비스 클래스 생성
+- [x] MenuService : 추천 받은 메뉴에 대한 정보를 다루는 서비스 생성
 ## view
 - [x] InputView : 입력을 담당하는 클래스 추가
 - [x] InputValidator : 검증을 담당하는 클래스 추가

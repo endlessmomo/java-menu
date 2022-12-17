@@ -14,7 +14,7 @@ public class CoachService {
     }
 
     public void saveCoach(CoachNamesDto coachNames) {
-        coachRepository.saveAll(coachNames.getCoachNames());
+        coachRepository.saveAll(coachNames.getNames());
     }
 
     public List<Coach> findAll() {
