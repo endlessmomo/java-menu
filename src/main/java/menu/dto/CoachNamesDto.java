@@ -6,16 +6,14 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class CoachNamesDto {
-    private static final String COACH_NAMES_DELIMITER = ",";
 
-    private final String coachNames;
+    List<String> names;
 
-    public CoachNamesDto(String coachNames) {
-        this.coachNames = coachNames;
+    public CoachNamesDto(List<String> names) {
+        this.names = names;
     }
 
-    public List <String> getCoachNames(){
-        return Arrays.stream(coachNames.split(COACH_NAMES_DELIMITER))
-                .collect(toList());
+    public List<String> getNames() {
+        return names;
     }
 }
