@@ -31,7 +31,8 @@
 - [x] HateMenusDto : 못 먹는 음식을 전달하는 클래스
 
 ### domain
-- [ ] Coach : 코치를 표현하는 클래스
+- [x] Category : 음식 카테고리 Enum 클래스
+- 
 ## view
 - [x] InputView : 입력을 담당하는 클래스 추가
 - [x] InputValidator : 검증을 담당하는 클래스 추가
