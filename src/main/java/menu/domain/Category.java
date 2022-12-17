@@ -3,16 +3,16 @@ package menu.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public enum Category {
-    KOREAN_FOOD(1, "한식"),
-    JAPANESE_FOOD(2, "일식"),
-    WESTERN_FOOD(3, "양식"),
-    CHINESE_FOOD(4, "중식"),
-    ASIAN_FOOD(5, "아시안");
-
+    JAPAN(1, "일식"),
+    KOREA(2, "한식"),
+    CHINA(3, "중식"),
+    ASIAN(4, "아시안"),
+    WESTERN(5, "양식");
 
     private static final int CATEGORY_INDEX_LOWER_BOUND = 1;
     private static final int CATEGORY_INDEX_UPPER_BOUND = 5;
@@ -30,7 +30,7 @@ public enum Category {
 
     public static Category of(Integer number) {
         return Arrays.stream(Category.values())
-                .filter(category -> category.command == number)
+                .filter(category -> Objects.equals(category.command, number))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_CATEGORY_MESSAGE));
     }
