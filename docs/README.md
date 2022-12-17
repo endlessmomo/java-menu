@@ -38,7 +38,9 @@
 - [x] Menus : 메뉴 일급 컬렉션 추가 
 - [x] NumberGenerate : 숫자 생성 인터페이스
    - [x] RandomNumberGenerate : 인터페이스 구현체
-- 
+
+### repository
+- [x] 코치들을 관리하는 레파지토리 생성
 ## view
 - [x] InputView : 입력을 담당하는 클래스 추가
 - [x] InputValidator : 검증을 담당하는 클래스 추가
