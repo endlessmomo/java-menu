@@ -28,6 +28,7 @@
  
 ### dto
 - [x] MenuDto : 출력을 위한 Menu 클래스 생성
+- [x] MenusDto : 출력을 위한 Menu 클래스 생성
 - [x] CoachDto : 코치에 대한 정보를 가지고 있는 클래스 생성
 
 
