@@ -30,6 +30,8 @@
 - [x] CoachNamesDto : 코치의 이름을 전달하는 클래스
 - [x] HateMenusDto : 못 먹는 음식을 전달하는 클래스
 - [x] CoachDto : 코치에 대한 정보를 가지고 있는 클래스 생성
+- [x] NumberGenerate : 숫자 생성 인터페이스
+  - [x] RandomNumberGenerate : 인터페이스 구현체
 
 ### domain
 - [x] Category : 음식 카테고리 Enum 클래스
