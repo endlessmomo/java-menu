@@ -28,3 +28,5 @@
  
 ### dto
 - [x] CoachNamesDto : 코치의 이름을 전달하는 클래스
+- [x] HateMenusDto : 못 먹는 음식을 전달하는 클래스
+
