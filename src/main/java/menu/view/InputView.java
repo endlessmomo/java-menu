@@ -1,5 +1,6 @@
 package menu.view;
 
+import menu.domain.Coach;
 import menu.dto.CoachNamesDto;
 import menu.dto.HateMenusDto;
 
@@ -18,8 +19,8 @@ public class InputView {
         return new CoachNamesDto(names);
     }
 
-    public HateMenusDto readHateMenus(Coach coach){
-        System.out.println( coach.getName() + READ_HATE_MENU_NAMES_MESSAGE);
+    public HateMenusDto readHateMenus(String name){
+        System.out.println(name + READ_HATE_MENU_NAMES_MESSAGE);
         String menus = readLine();
         inputValidator.validateMenuNames(menus);
         return new HateMenusDto(menus);
