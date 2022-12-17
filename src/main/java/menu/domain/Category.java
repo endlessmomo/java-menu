@@ -37,7 +37,7 @@ public enum Category {
 
     public static List <Category> generateRandomCategory(int size) {
         size = Integer.min(size, CATEGORY_SIZE_UPPER_BOUND);
-        List<Category> categories = new ArrayList <>();
+        List <Category> categories = new ArrayList <>();
         for (int i = 0; i < size; i++) {
             Category category = getValidCategory(categories);
             categories.add(category);
@@ -45,7 +45,7 @@ public enum Category {
         return categories;
     }
 
-    private static Category getValidCategory(List<Category> categories) {
+    private static Category getValidCategory(List <Category> categories) {
         Category category = Category.of(pickNumberInRange(CATEGORY_INDEX_LOWER_BOUND, CATEGORY_INDEX_UPPER_BOUND));
         if (getCount(categories, category) >= INVALID_CATEGORY_SIZE) {
             return getValidCategory(categories);
@@ -53,7 +53,7 @@ public enum Category {
         return category;
     }
 
-    private static long getCount(List<Category> categories, Category other) {
+    private static long getCount(List <Category> categories, Category other) {
         return categories.stream()
                 .filter(category -> category.equals(other))
                 .count();
@@ -61,4 +61,5 @@ public enum Category {
 
     public String getName() {
         return name;
+    }
 }
