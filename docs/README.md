@@ -29,6 +29,7 @@
 ### dto
 - [x] MenuDto : 출력을 위한 Menu 클래스 생성
 - [x] MenusDto : 출력을 위한 Menu 클래스 생성
+- [x] InvalidMenusDto : 코치별 못 먹는 음식에 대한 정보를 가진 클래스 생성
 - [x] CoachDto : 코치에 대한 정보를 가지고 있는 클래스 생성
 
 
