@@ -32,6 +32,8 @@
 - [x] InvalidMenusDto : 코치별 못 먹는 음식에 대한 정보를 가진 클래스 생성
 - [x] CoachDto : 코치에 대한 정보를 가지고 있는 클래스 생성
 
+### controller
+- [x] MenuController : 전체적 FLOW 를 담당할 controller 구현 
 
 ### domain
 - [x] Category : 음식 카테고리 Enum 클래스
