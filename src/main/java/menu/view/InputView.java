@@ -1,28 +1,45 @@
 package menu.view;
 
-import menu.domain.Coach;
-import menu.dto.CoachNamesDto;
-import menu.dto.HateMenusDto;
+import static java.util.stream.Collectors.toList;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
+import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import menu.domain.Menu;
+import menu.dto.CoachNamesDto;
+import menu.dto.CoachNamesDto;
+import menu.dto.InvalidMenusDto;
 
 public class InputView {
-    private static final String READ_COACH_NAMES_MESSAGE = "코치의 이름을 입력해주세요. (,로 구분)";
-    private static final String READ_HATE_MENU_NAMES_MESSAGE = "(이)가 못 먹는 메뉴를 입력해 주세요.";
 
-    private final InputValidator inputValidator = new InputValidator();
+    private static final String READ_COACH_NAMES_MESSAGE = "\n코치의 이름을 입력해 주세요. (, 로 구분)";
+    private static final String READ_MENU_NAMES_MESSAGE = "\n{0}(이)가 못 먹는 메뉴를 입력해 주세요.";
+    private static final String DELIMITER = ",";
+    private static final int SPLIT_INDEX = -1;
 
-    public CoachNamesDto  readCoachNames(){
+    public CoachNamesDto readCoachNames() {
         System.out.println(READ_COACH_NAMES_MESSAGE);
-        String names = readLine();
-        inputValidator.validateCoachNames(names);
-        return new CoachNamesDto(names);
+        String names = Console.readLine();
+        InputValidator.validateCoachName(names);
+        return toCoachName(names);
     }
 
-    public HateMenusDto readHateMenus(String name){
-        System.out.println(name + READ_HATE_MENU_NAMES_MESSAGE);
-        String menus = readLine();
-        inputValidator.validateMenuNames(menus);
-        return new HateMenusDto(menus);
+    private CoachNamesDto toCoachName(String names) {
+        return Arrays.stream(names.split(DELIMITER, SPLIT_INDEX))
+                .collect(Collectors.collectingAndThen(toList(), CoachNamesDto::new));
+    }
+
+    public InvalidMenusDto readMenuNames(String name) {
+        System.out.println(MessageFormat.format(READ_MENU_NAMES_MESSAGE, name));
+        String names = Console.readLine();
+        InputValidator.validateMenuNames(names);
+        return toMenuNames(names);
+    }
+
+    private InvalidMenusDto toMenuNames(String names) {
+        return Arrays.stream(names.split(DELIMITER, SPLIT_INDEX))
+                .map(Menu::new)
+                .collect(Collectors.collectingAndThen(toList(), InvalidMenusDto::new));
     }
 }
