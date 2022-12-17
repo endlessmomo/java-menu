@@ -2,7 +2,7 @@ package menu.view;
 
 import java.util.Arrays;
 
-public class InputValidate {
+public class InputValidator {
     private static final String COACH_NAMES_DELIMITER = ",";
     private static final String MENU_NAMES_DELIMITER = ",";
     private static final String WHITE_SPACE = " ";
@@ -28,14 +28,14 @@ public class InputValidate {
         return name.isBlank() || name.contains(WHITE_SPACE) || name.length() > COACH_NAME_MAX_LENGTH || name.length() < COACH_NAME_MIN_LENGTH;
     }
 
-    public void validateMenuNames(String names){
-        if(isInvalidMenuNames(names)){
+    public void validateMenuNames(String menus){
+        if(isInvalidMenuNames(menus)){
             throw new IllegalArgumentException(INVALID_MENU_COUNT);
         }
     }
 
-    private boolean isInvalidMenuNames(String names){
-        return Arrays.stream(names.split(MENU_NAMES_DELIMITER))
+    private boolean isInvalidMenuNames(String menus){
+        return Arrays.stream(menus.split(MENU_NAMES_DELIMITER))
                 .count() > MENU_COUNT_UPPER_BOUND;
     }
 }
