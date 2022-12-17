@@ -1,7 +1,7 @@
 package menu.view;
 
-import menu.model.dto.CoachNamesDto;
-import menu.model.dto.HateMenusDto;
+import menu.dto.CoachNamesDto;
+import menu.dto.HateMenusDto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
