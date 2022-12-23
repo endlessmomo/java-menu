@@ -52,5 +52,4 @@ public class AppConfig {
     private static CoachRepository coachRepository() {
         return new CoachRepository();
     }
-
 }
